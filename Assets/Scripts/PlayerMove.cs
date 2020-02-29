@@ -4,26 +4,50 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+
+    private Rigidbody rigid;
+    //캐릭터 기본
     public int JumpPower;
     public int speed;
-    private Rigidbody rigid;
-    private bool IsJumping;
+    public static bool IsNormal;
+    public bool IsJumping;
+    public int chrSize;
+    Vector3 chrPos;
+    public int chrColor;
+    //퉤 관련
+    public int tweSpeed;
+    public static bool IsTweing;
+
+    //냠 관련
+    public bool IsNyaming;
+   // public GameObject obj_twe;
+    public GameObject twePrefab;
+
+
+
+
     // Start is called before the first frame update
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+        
+        
     }
     void Start()
     {
-       IsJumping = false;
+        IsNormal = true;
+        IsJumping = false;
+        IsTweing = false;
+
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         moveObject();
         Jump();
-       
+        twe();
+        chrPos = this.gameObject.transform.position;
     }
     void moveObject()
 
@@ -44,24 +68,47 @@ public class PlayerMove : MonoBehaviour
     void Jump()
     {
         
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             
-            if (!IsJumping)
+            if (IsNormal && !IsJumping)
             {
                 
+                IsNormal = false;
                 IsJumping = true;
                 rigid.AddForce(Vector3.up * JumpPower, ForceMode.Impulse);
+                Debug.Log("jump");
             }
             
             else
             {
-                return;
+                //return;
             }
         }
     }
 
+    void twe()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            if (IsNormal&&!IsTweing)
+            {
+                if (chrSize > 1)
+                {
+                    IsNormal = false;
+                    IsTweing = true;
+                    chrSize -= 1;
+                    GameObject Instance = (GameObject)Instantiate(twePrefab, chrPos, Quaternion.identity);
+                    //Instance.name = "twespit";
+                 
+                    Instance.GetComponent<Rigidbody>().AddForce(Vector3.right*tweSpeed, ForceMode.Impulse);
+                   
+                    //프리팹으로 퉤 생성하고 끝나면 노말이랑 점핑 원래대로
 
+                }
+            }
+        }
+    }
    
 
 
@@ -70,12 +117,40 @@ public class PlayerMove : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Ground"))
         {
+            if (IsJumping)
+            {
+                IsNormal = true;
+            }
           
             IsJumping = false;
+            Debug.Log("ㅇ");
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        //IsJumping = false;
 
- 
-   
+    }
+
+
+    private void OnTriggerStay(Collider collision)
+    {
+
+        if (collision.gameObject.CompareTag("tweground"))
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                if (IsNormal && !IsTweing && chrSize<5)
+                {
+                    IsNormal = false;
+                    IsTweing = true;
+                    chrSize += 1;
+                    Destroy(collision.gameObject);
+
+                }
+            }
+        }
+    }
+
 }
