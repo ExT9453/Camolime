@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Ground
   - tweground
+  - greenItem
+  - redItem
+  - blueItem
+  - blueG
+  - redG
+  - greenG
   layers:
   - Default
   - TransparentFX
