@@ -27,6 +27,8 @@ public class PlayerMove : MonoBehaviour
     public GameObject twePrefab;
     //냠 관련
     public bool IsNyaming;
+    //숨기 관련
+    public bool IsHiding;
 
 
 
@@ -35,9 +37,7 @@ public class PlayerMove : MonoBehaviour
     void Awake()
     {
         chrColor = 0;
-       /* blueMT = Resources.Load("blueMaterial", typeof(Material)) as Material;
-        redMT = Resources.Load("redMaterial", typeof(Material)) as Material;
-        greenMT = Resources.Load("greenMaterial", typeof(Material)) as Material;*/
+      
         rigid = GetComponent<Rigidbody>();
         chrRenderer = GetComponent<SpriteRenderer>();
         chrRenderer.sprite = chrColorSprite[0];
@@ -49,6 +49,7 @@ public class PlayerMove : MonoBehaviour
         IsNormal = true;
         IsJumping = false;
         IsTweing = false;
+        IsHiding = false;
 
     }
 
@@ -172,6 +173,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
    
+   
 
 
     private void OnCollisionEnter(Collision collision)
@@ -194,7 +196,7 @@ public class PlayerMove : MonoBehaviour
         //IsJumping = false;
 
     }
-
+    /*
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("redItem"))
@@ -211,7 +213,7 @@ public class PlayerMove : MonoBehaviour
             chrColor = 2;
 
         }
-    }
+    }*/
 
     private void OnTriggerStay(Collider collision)
     {
@@ -245,6 +247,57 @@ public class PlayerMove : MonoBehaviour
                     IsTweing = false;
                 }
             }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (IsNormal && !IsHiding)
+            {
+                if (collision.gameObject.CompareTag("blueG"))
+                {
+                    if (chrColor == 0)
+                    {
+                        IsHiding = true;
+                        IsNormal = false;
+                    }
+                    else
+                    {
+                        //색이 다릅니다
+                    }
+                }
+                if (collision.gameObject.CompareTag("redG"))
+                {
+                    if (chrColor == 1)
+                    {
+                        IsHiding = true;
+                        IsNormal = false;
+                    }
+                    else
+                    {
+                        //색이 다릅니다
+                    }
+                }
+                if (collision.gameObject.CompareTag("greenG"))
+                {
+                    if (chrColor == 2)
+                    {
+                        IsHiding = true;
+                        IsNormal = false;
+                    }
+                    else
+                    {
+                        //색이 다릅니다
+                    }
+                }
+
+            }
+            else if (IsHiding)
+            {
+                IsHiding = false;
+                IsNormal = true;
+            }
+
+        }
+
+
         //}
     }
 

@@ -4,14 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
-  - tweground
-  - greenItem
-  - redItem
-  - blueItem
+  - greenG
   - blueG
   - redG
-  - greenG
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -21,8 +17,8 @@ TagManager:
   - UI
   - 
   - 
-  - Ground
-  - Player
+  - 
+  - 
   - 
   - 
   - 
@@ -48,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: chr
+    uniqueID: 1431757621
     locked: 0

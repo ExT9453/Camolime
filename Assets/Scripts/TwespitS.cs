@@ -62,20 +62,23 @@ public class TwespitS : MonoBehaviour
 
             PlayerMove.IsTweing = false;
             PlayerMove.IsNormal = true;
+
             if (PlayerMove.twecolor == 0)
             {
                 GameObject nyamInstanceBlue = (GameObject)Instantiate(nyamPrefabBlue, twePos, Quaternion.identity);
+                Destroy(this.gameObject);
             }
             else if (PlayerMove.twecolor == 1)
             {
                 GameObject nyamInstanceRed = (GameObject)Instantiate(nyamPrefabRed, twePos, Quaternion.identity);
+                Destroy(this.gameObject);
             }
             else if (PlayerMove.twecolor == 2)
             {
                 GameObject nyamInstanceGreed = (GameObject)Instantiate(nyamPrefabGreen, twePos, Quaternion.identity);
+                Destroy(this.gameObject);
             }
-
-            Destroy(this.gameObject);
+           
 
 
         }
