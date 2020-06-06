@@ -8,6 +8,9 @@ TagManager:
   - blueG
   - redG
   - Ground
+  - blueOb
+  - redOb
+  - greenOb
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Player
   - 
   - 
   - 

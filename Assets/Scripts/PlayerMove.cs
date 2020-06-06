@@ -11,15 +11,18 @@ public class PlayerMove : MonoBehaviour
      Material greenMT;*/
     private Rigidbody rigid;
     //캐릭터 기본
+    public float h, v;
+    Vector3 moveDirection;
     public Sprite[] chrColorSprite;
     private SpriteRenderer chrRenderer;
-    public int JumpPower;
-    public int speed;
+    public float JumpPower;
+    public float speed = 7f;
+    public bool IsMoving;
     public static bool IsNormal;
     public bool IsJumping;
     public int chrSize;
     Vector3 chrPos;
-    public static int chrColor;
+    public static int chrColor=0;
     //퉤 관련
     
     public int tweSpeed;
@@ -29,6 +32,8 @@ public class PlayerMove : MonoBehaviour
     public bool IsNyaming;
     //숨기 관련
     public bool IsHiding;
+    public bool hidingOff;
+    public float hidingDelay;
 
 
 
@@ -50,6 +55,7 @@ public class PlayerMove : MonoBehaviour
         IsJumping = false;
         IsTweing = false;
         IsHiding = false;
+        hidingOff = false;
 
     }
 
@@ -57,7 +63,7 @@ public class PlayerMove : MonoBehaviour
     void FixedUpdate()
     {
         moveObject();
-        Jump();
+        //Jump();
         twe();
         chrPos = this.gameObject.transform.position;
         if (chrColor==0)
@@ -74,41 +80,70 @@ public class PlayerMove : MonoBehaviour
             chrRenderer.sprite = chrColorSprite[2];
 
         }
+
+       
     }
     void Update()
     {
-        
-
+        if (!hidingOff&&IsHiding)
+        {
+            
+            if (hidingDelay > 0)
+            {
+                hidingDelay -= Time.deltaTime;
+            }
+            if (hidingDelay <= 0)
+            {
+                hidingOff = true;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (IsHiding && hidingOff)
+            {
+                IsHiding = false;
+                IsNormal = true;
+                hidingOff = false;
+                Debug.Log("a");
+            }
+        }
     }
 
 
     void moveObject()
 
     {
-
-        float h = Input.GetAxis("Horizontal");
-
-        float v = Input.GetAxis("Vertical");
-
-        if (h < 0)
+        if (IsNormal&& !IsJumping)
         {
-            chrRenderer.flipX = true;
+            
+            h = Input.GetAxis("Horizontal");
+
+            v = Input.GetAxis("Vertical");
+            //IsNormal = false;
+            if (h < 0)
+            {
+                chrRenderer.flipX = true;
+
+            }
+            else if (h > 0)
+            {
+
+                chrRenderer.flipX = false;
+
+            }
+
+
+            transform.Translate(Vector3.right.normalized * speed * Time.smoothDeltaTime * h, Space.World);
+            transform.Translate(Vector3.forward.normalized * speed * Time.smoothDeltaTime * v, Space.World);
+           moveDirection = new Vector3(h, 0, v);
+            moveDirection.Normalize();
+            //playerRb.AddForce(moveDirection * speed);
+            //rigid.velocity = (moveDirection * speed);
 
         }
-        else if (h > 0)
-        {
-
-            chrRenderer.flipX = false;
-
-        }
-
-        transform.Translate(Vector3.right.normalized * speed * Time.smoothDeltaTime * h, Space.World);
-
-        transform.Translate(Vector3.forward.normalized * speed * Time.smoothDeltaTime * v, Space.World);
-
     }
 
-
+    /*
     void Jump()
     {
         
@@ -128,13 +163,13 @@ public class PlayerMove : MonoBehaviour
                 //return;
             }
         }
-    }
+    }*/
 
     void twe()
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            if (IsNormal&&!IsTweing)
+            if (IsNormal&&!IsTweing&&!IsJumping)
             {
                 if (chrSize > 1)
                 {
@@ -155,7 +190,9 @@ public class PlayerMove : MonoBehaviour
                     IsNormal = false;
                     IsTweing = true;
                     chrSize -= 1;
-                    GameObject tweInstance = (GameObject)Instantiate(twePrefab, chrPos, Quaternion.identity);
+                    //Quaternion rotation = Quaternion.identity;
+                   // rotation.eulerAngles = new Vector3(60, 0, 0);
+                    GameObject tweInstance = (GameObject)Instantiate(twePrefab, chrPos,Quaternion.identity);
                     //Instance.name = "twespit";
                     if (chrRenderer.flipX == false)
                     {
@@ -178,7 +215,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        /*
         if (collision.gameObject.CompareTag("Ground"))
         {
             if (IsJumping)
@@ -188,14 +225,85 @@ public class PlayerMove : MonoBehaviour
           
             IsJumping = false;
             Debug.Log("ㅇ");
-        }
+        }*/
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        //IsJumping = false;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            IsJumping = false;
+            speed = 7f;
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
 
-    }
+            if (IsNormal && !IsJumping)
+            {
+                float xSpeed = 0;
+                float zSpeed = 0;
+                IsJumping = true;
+                moveDirection = new Vector3(h, 1, v);
+                rigid.velocity = Vector3.zero;
+                //moveDirection.Normalize();
+                Vector3 vectornormal = moveDirection.normalized;
+                speed = 0;
+                if (h > 0)
+                {
+                    xSpeed = 9;
+                }
+                else if (h < 0)
+                {
+                    xSpeed = -9;
+                }
+                if (v > 0)
+                {
+                    zSpeed = 9;
+                }
+                else if (v < 0)
+                {
+                    zSpeed = -9;
+                }
+                rigid.velocity = vectornormal + new Vector3(xSpeed, JumpPower*0.75f, zSpeed);
+               // rigid.AddForce(vectornormal* JumpPower, ForceMode.Impulse);
+                Debug.Log("jump");
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+           
+            
+                if (collision.gameObject.CompareTag("blueOb"))
+                
+            {
+                colorManager obBlue = collision.gameObject.GetComponent<colorManager>();
+                
+                
+                if (obBlue.colorOn)
+                {
+                    //colorManager.colorOn = false;
+                    obBlue.colorOn = false;
+                    chrColor = 0;
+                    Debug.Log("뺏음");
+                }
+            }
+
+            if (collision.gameObject.CompareTag("redOb"))
+            {
+                //colorManager.colorOn = false;
+                chrColor = 1;
+            }
+
+            if (collision.gameObject.CompareTag("greenOb"))
+            {
+                //colorManager.colorOn = false;
+                chrColor = 2;
+            }
+        }
+
+
+        }
+    
     /*
     private void OnTriggerEnter(Collider collision)
     {
@@ -222,7 +330,7 @@ public class PlayerMove : MonoBehaviour
         //{
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                if (IsNormal && !IsTweing && chrSize<5)
+                if (IsNormal && !IsTweing && chrSize<5&&!IsJumping)
                 {
                     IsNormal = false;
                     IsTweing = true;
@@ -247,23 +355,39 @@ public class PlayerMove : MonoBehaviour
                     IsTweing = false;
                 }
             }
+
+
+
+
+        //}
+
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (IsNormal && !IsHiding)
+            if (IsNormal && !IsJumping && !IsHiding)
             {
-                if (collision.gameObject.CompareTag("blueG"))
+
+                if (collision.gameObject.CompareTag("blueOb"))
                 {
-                    if (chrColor == 0)
+                    bool blueColorOn = collision.gameObject.GetComponent<colorManager>().colorOn;
+                    if (blueColorOn)
                     {
-                        IsHiding = true;
-                        IsNormal = false;
-                    }
-                    else
-                    {
-                        //색이 다릅니다
+                        if (chrColor == 0)
+                        {
+                            IsHiding = true;
+                            IsNormal = false;
+                            hidingOff = false;
+                            hidingDelay = 2;
+
+                            Debug.Log("숨기");
+                        }
+                        else
+                        {
+                            //색이 다릅니다
+                        }
                     }
                 }
-                if (collision.gameObject.CompareTag("redG"))
+                if (collision.gameObject.CompareTag("redOb"))
                 {
                     if (chrColor == 1)
                     {
@@ -275,7 +399,7 @@ public class PlayerMove : MonoBehaviour
                         //색이 다릅니다
                     }
                 }
-                if (collision.gameObject.CompareTag("greenG"))
+                if (collision.gameObject.CompareTag("greenOb"))
                 {
                     if (chrColor == 2)
                     {
@@ -288,17 +412,25 @@ public class PlayerMove : MonoBehaviour
                     }
                 }
 
+
+
             }
-            else if (IsHiding)
+            /*
+            else if (IsHiding && hidingOff)
             {
                 IsHiding = false;
                 IsNormal = true;
-            }
+                hidingOff = false;
+                Debug.Log("a");
+            }*/
+        }
+
+        else
+        {
 
         }
 
-
-        //}
     }
-
 }
+
+
