@@ -27,7 +27,6 @@ public class AiView1 : MonoBehaviour
     {
         //sight();
         //moveAI();
-        Move();
 
         target = GameObject.Find("1").transform;
         direction = (target.position - transform.position).normalized;
@@ -37,6 +36,12 @@ public class AiView1 : MonoBehaviour
         if (distance <= 10.0f)
         {
             moveAI();
+        }
+        else
+        {
+            Move();
+
+
         }
 
 
@@ -62,7 +67,7 @@ public class AiView1 : MonoBehaviour
 
     }
 
-    public void moveAI()
+     public void moveAI()
     {
 
         target = GameObject.Find("1").transform;
@@ -77,22 +82,33 @@ public class AiView1 : MonoBehaviour
         // 일정거리 안에 있을 시, 해당 방향으로 무빙
         if (distance <= 10.0f)
         {
+            Debug.Log("거리 안");
             this.transform.position = new Vector3(transform.position.x + (direction.x * velocity),
                                                     transform.position.y,
                                                     transform.position.z + (direction.z * velocity)
                                                     );
+            
+            if(this.direction.x<=0)
+            { 
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+
+            }
         }
         // 일정거리 밖에 있을 시, 속도 초기화 
         else
         {
             velocity = 0.0f;
-
+            Debug.Log("거리 밖");
             movementFlag = Random.Range(0, 3);
-            yield return new WaitForSeconds(3f);
-            StartCoroutine("ChangeMovement");
+            //yield return new WaitForSeconds(3f);
+            //StartCoroutine("ChangeMovement");
+
 
         }
-
     }
 
     IEnumerator ChangeMovement()

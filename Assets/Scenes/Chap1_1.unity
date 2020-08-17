@@ -1078,14 +1078,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1407244325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 329baa159b251994dad846e1bcb01d9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 028afe73f819c0b42b2c6dd058a4c6e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_angle: 45
-  m_distance: 10
+  m_angle: 0
+  m_distance: 0
   m_layerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
+  target: {fileID: 0}
+  direction: {x: 0, y: 0, z: 0}
+  velocity: 0
+  accelaration: 0
+  movePower: 1
 --- !u!1 &1469628220
 GameObject:
   m_ObjectHideFlags: 0
