@@ -29,6 +29,17 @@ public class AiView1 : MonoBehaviour
         //moveAI();
         Move();
 
+        target = GameObject.Find("1").transform;
+        direction = (target.position - transform.position).normalized;
+
+        float distance = Vector3.Distance(target.position, transform.position);
+
+        if (distance <= 10.0f)
+        {
+            moveAI();
+        }
+
+
     }
 
     void Move()
@@ -75,6 +86,11 @@ public class AiView1 : MonoBehaviour
         else
         {
             velocity = 0.0f;
+
+            movementFlag = Random.Range(0, 3);
+            yield return new WaitForSeconds(3f);
+            StartCoroutine("ChangeMovement");
+
         }
 
     }
