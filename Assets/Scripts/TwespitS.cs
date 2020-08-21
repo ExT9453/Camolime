@@ -60,8 +60,8 @@ public class TwespitS : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
 
-            PlayerMove.IsTweing = false;
-            PlayerMove.IsNormal = true;
+            PlayerMove.instance.IsTweing = false;
+            PlayerMove.instance.IsNormal = true;
             Quaternion rotation = Quaternion.identity;
             rotation.eulerAngles = new Vector3(60, 0, 0);
             if (PlayerMove.twecolor == 0)

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    public static PlayerMove instance;
+    public AudioClip[] sounds;
+    AudioSource AS;
     public static int twecolor = 0;
     /* Material blueMT;
      Material redMT;
@@ -18,15 +21,15 @@ public class PlayerMove : MonoBehaviour
     public float JumpPower;
     public float speed = 7f;
     public bool IsMoving;
-    public static bool IsNormal;
+    public bool IsNormal;
     public bool IsJumping;
     public int chrSize;
     Vector3 chrPos;
-    public static int chrColor=0;
+    public int chrColor=0;
     //퉤 관련
     
     public int tweSpeed;
-    public static bool IsTweing;
+    public bool IsTweing;
     public GameObject twePrefab;
     //냠 관련
     public bool IsNyaming;
@@ -41,8 +44,16 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        if(instance==null)
+        {
+            instance=this;
+        }
+        else
+        {
+            Destroy(this);
+        }
         chrColor = 0;
-      
+        AS = GetComponent<AudioSource>();
         rigid = GetComponent<Rigidbody>();
         chrRenderer = GetComponent<SpriteRenderer>();
         chrRenderer.sprite = chrColorSprite[0];
@@ -85,6 +96,7 @@ public class PlayerMove : MonoBehaviour
     }
     void Update()
     {
+        rigid.WakeUp();
         if (!hidingOff&&IsHiding)
         {
             
@@ -123,13 +135,27 @@ public class PlayerMove : MonoBehaviour
             if (h < 0)
             {
                 chrRenderer.flipX = true;
+                
 
             }
             else if (h > 0)
             {
 
                 chrRenderer.flipX = false;
+            }
 
+            if(h==0 && v==0)
+            {
+                 
+                    AS.Stop();
+            }
+            else
+            {
+                 if (!AS.isPlaying)
+                {
+                    AS.clip=sounds[0];
+                    AS.Play();
+                }
             }
 
 
@@ -137,6 +163,7 @@ public class PlayerMove : MonoBehaviour
             transform.Translate(Vector3.forward.normalized * speed * Time.smoothDeltaTime * v, Space.World);
            moveDirection = new Vector3(h, 0, v);
             moveDirection.Normalize();
+           
             //playerRb.AddForce(moveDirection * speed);
             //rigid.velocity = (moveDirection * speed);
 
@@ -234,6 +261,7 @@ public class PlayerMove : MonoBehaviour
         {
             IsJumping = false;
             speed = 7f;
+            Debug.Log("on ground");
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -323,114 +351,7 @@ public class PlayerMove : MonoBehaviour
         }
     }*/
 
-    private void OnTriggerStay(Collider collision)
-    {
-
-        //if (collision.gameObject.CompareTag("tweground"))
-        //{
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                if (IsNormal && !IsTweing && chrSize<5&&!IsJumping)
-                {
-                    IsNormal = false;
-                    IsTweing = true;
-                    chrSize += 1;
-                    if (collision.gameObject.CompareTag("blueG"))
-                    {
-                        chrColor = 0;
-                    }
-                    else if (collision.gameObject.CompareTag("redG"))
-                    {
-                        chrColor = 1;
-                    }
-
-                   else if (collision.gameObject.CompareTag("greenG"))
-                    {
-                        chrColor = 2;
-                    }
-                    
-                        Destroy(collision.gameObject);
-                    //애니메이션 끝나면
-                    IsNormal = true;
-                    IsTweing = false;
-                }
-            }
-
-
-
-
-        //}
-
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (IsNormal && !IsJumping && !IsHiding)
-            {
-
-                if (collision.gameObject.CompareTag("blueOb"))
-                {
-                    bool blueColorOn = collision.gameObject.GetComponent<colorManager>().colorOn;
-                    if (blueColorOn)
-                    {
-                        if (chrColor == 0)
-                        {
-                            IsHiding = true;
-                            IsNormal = false;
-                            hidingOff = false;
-                            hidingDelay = 2;
-
-                            Debug.Log("숨기");
-                        }
-                        else
-                        {
-                            //색이 다릅니다
-                        }
-                    }
-                }
-                if (collision.gameObject.CompareTag("redOb"))
-                {
-                    if (chrColor == 1)
-                    {
-                        IsHiding = true;
-                        IsNormal = false;
-                    }
-                    else
-                    {
-                        //색이 다릅니다
-                    }
-                }
-                if (collision.gameObject.CompareTag("greenOb"))
-                {
-                    if (chrColor == 2)
-                    {
-                        IsHiding = true;
-                        IsNormal = false;
-                    }
-                    else
-                    {
-                        //색이 다릅니다
-                    }
-                }
-
-
-
-            }
-            /*
-            else if (IsHiding && hidingOff)
-            {
-                IsHiding = false;
-                IsNormal = true;
-                hidingOff = false;
-                Debug.Log("a");
-            }*/
-        }
-
-        else
-        {
-
-        }
-
-    }
+   
 }
 
 
