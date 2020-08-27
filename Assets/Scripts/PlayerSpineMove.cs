@@ -1,26 +1,32 @@
 ﻿using Spine.Unity;
+using Spine.Unity.Examples;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSpineMove : MonoBehaviour
 {
-    public SkeletonAnimation _SkeletonAnimation;
+	float horizontalMove;
+	float verticalMove;
 
-	public float m_MoveSpeed = 10.0f;
+	Rigidbody rigidbody;
+	Animator animator;
 
-	// 이동할 방향을 나타냅니다.
-	private Vector3 _DirectionVector;
+    private void Awake()
+    {
+		rigidbody = GetComponent<Rigidbody>();
+		animator = GetComponent<Animator>();
+    }
 
-	private void Update()
+    private void Update()
 	{
-		// 키 입력
-		InputKey();
+		horizontalMove = Input.GetAxisRaw("Horizontal");
+		verticalMove = Input.GetAxisRaw("Vertical");
 
-		// 캐릭터 이동
-		MovePlayerCharacter();
+		AnimationUpdate();
 
-        #region SpineWork
+		#region SpineWork
+		/*
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
 		{
 			// true는 looping 할것인가
@@ -56,21 +62,36 @@ public class PlayerSpineMove : MonoBehaviour
 		{
 			_SkeletonAnimation.AnimationState.SetAnimation(0, "Hide/Hide_Side", true);
 		}
+		*/
 #endregion
     }
 
-    // 키 입력을 받습니다.
-    private void InputKey()
-	{
-		// 방향 설정
-		_DirectionVector.x = Input.GetAxisRaw("Horizontal");
-		_DirectionVector.z = Input.GetAxisRaw("Vertical");
-	}
 
-	// 설정된 방향으로 캐릭터를 이동시킵니다.
-	private void MovePlayerCharacter()
-	{
-		transform.Translate(_DirectionVector * m_MoveSpeed * Time.deltaTime, Space.World);
+	void AnimationUpdate()
+    {
+		if (horizontalMove == 0 && verticalMove == 0)
+		{
+			animator.SetBool("_MoveHorizontal", false);
+			animator.SetBool("_MoveBack", false);
+			animator.SetBool("_MoveFront", false);
+		}
+		if (horizontalMove > 0)
+        {
+			animator.SetBool("_MoveHorizontal", true);
+			transform.localScale = new Vector3(1, 1, 1);
+        }
+		if (horizontalMove < 0)
+        {
+			animator.SetBool("_MoveHorizontal", true);
+			transform.localScale = new Vector3(-1, 1, 1);
+		}
+		if (verticalMove > 0)
+        {
+			animator.SetBool("_MoveBack", true);
+        }
+		if (verticalMove < 0)
+        {
+			animator.SetBool("_MoveFront", true);
+        }
 	}
-
 }

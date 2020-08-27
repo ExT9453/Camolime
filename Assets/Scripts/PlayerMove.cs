@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
+using UnityEditor;
 //using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
     public static PlayerMove instance;
     public AudioClip[] sounds;
-    public SkeletonAnimation _SkeletonAnimation;
 
     AudioSource AS;
     public static int twecolor = 0;
@@ -123,49 +123,11 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        // 캐몰라임 스파인 구현
-        #region SpineWork
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            // true는 looping 할것인가
-            _SkeletonAnimation.AnimationState.SetAnimation(0, "Move/Move_Side", true);
-            _SkeletonAnimation.skeleton.FlipX = false;
-        }
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            _SkeletonAnimation.AnimationState.SetAnimation(0, "Move/Move_Side", true);
-            _SkeletonAnimation.skeleton.FlipX = true;
-        }
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            _SkeletonAnimation.AnimationState.SetAnimation(0, "Move/Move_Front", true);
-        }
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            _SkeletonAnimation.AnimationState.SetAnimation(0, "Move/Move_Back", true);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            _SkeletonAnimation.AnimationState.SetAnimation(0, "Yum/Yum_Side", true);
-        }
-        //if (Input.GetKeyDown(KeyCode.K))
-        //{
-        //  점프 스파인 없음
-        //}
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            _SkeletonAnimation.AnimationState.SetAnimation(0, "Spat", true);
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _SkeletonAnimation.AnimationState.SetAnimation(0, "Hide/Hide_Side", true);
-        }
-        #endregion
+        
     }
 
 
     void moveObject()
-
     {
         if (IsNormal&& !IsJumping)
         {
@@ -203,7 +165,7 @@ public class PlayerMove : MonoBehaviour
 
             transform.Translate(Vector3.right.normalized * speed * Time.smoothDeltaTime * h, Space.World);
             transform.Translate(Vector3.forward.normalized * speed * Time.smoothDeltaTime * v, Space.World);
-           moveDirection = new Vector3(h, 0, v);
+            moveDirection = new Vector3(h, 0, v);
             moveDirection.Normalize();
            
             //playerRb.AddForce(moveDirection * speed);
@@ -393,7 +355,6 @@ public class PlayerMove : MonoBehaviour
         }
     }*/
 
-   
 }
 
 
