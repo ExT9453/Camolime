@@ -13,7 +13,6 @@ public class AnimMove : MonoBehaviour
     public float verticalMove;
     bool hideCheck;
 
-
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -30,7 +29,6 @@ public class AnimMove : MonoBehaviour
 
         MoveAnimationUpdate();
         ActionAnimationUpdate();
-        Debug.Log("hideCheck = " + hideCheck);
     }
 
     void MoveAnimationUpdate()
@@ -81,6 +79,16 @@ public class AnimMove : MonoBehaviour
                 animator.SetFloat("_ReversePlay", -1.0f);
                 hideCheck = false;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            animator.SetTrigger("_Twe");
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            animator.SetTrigger("_Nyam");
         }
 
     }

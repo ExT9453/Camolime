@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
-public class AiView1 : MonoBehaviour
+public class DrongrabAiTest : MonoBehaviour
 {
     [SerializeField] float m_angle = 0f;
     [SerializeField] float m_distance = 0f;
     [SerializeField] LayerMask m_layerMask = 0;
+
+    Rigidbody Drongrab_rigidbody;
+    Animator Drongrab_animator;
 
     public Transform target;
     public Vector3 direction;
@@ -15,10 +19,14 @@ public class AiView1 : MonoBehaviour
 
     public float movePower = 1f;
     int movementFlag = 0; // 0:Idle, 1:left, 2:right
+    bool FireCheck;
 
     // Start is called before the first frame update
     void Start()
     {
+        Drongrab_rigidbody = GetComponent<Rigidbody>();
+        Drongrab_animator = GetComponent<Animator>();
+
         StartCoroutine("ChangeMovement");
     }
 
@@ -33,14 +41,24 @@ public class AiView1 : MonoBehaviour
 
         float distance = Vector3.Distance(target.position, transform.position);
 
-        if (distance <= 10.0f)
+
+
+        if (distance > 5.0f && distance <= 15.0f)
         {
             moveAI();
+            Drongrab_animator.SetBool("_Find", true);
         }
-        else
+        else if (distance <= 5.0f)
+        {
+            Drongrab_animator.SetTrigger("_Attack");
+        }
+        else if (distance > 15.0f)
         {
             Move();
+            Drongrab_animator.SetBool("_Find", false);
         }
+
+
 
 
     }
@@ -65,7 +83,7 @@ public class AiView1 : MonoBehaviour
 
     }
 
-     public void moveAI()
+    public void moveAI()
     {
 
         target = GameObject.Find("1").transform;
@@ -78,16 +96,16 @@ public class AiView1 : MonoBehaviour
         // Player와 객체 간의 거리 계산
         float distance = Vector3.Distance(target.position, transform.position);
         // 일정거리 안에 있을 시, 해당 방향으로 무빙
-        if (distance <= 10.0f)
+        if (distance > 5.0f && distance <= 15.0f)
         {
             Debug.Log("거리 안");
             this.transform.position = new Vector3(transform.position.x + (direction.x * velocity),
                                                     transform.position.y,
                                                     transform.position.z + (direction.z * velocity)
                                                     );
-            
-            if(this.direction.x<=0)
-            { 
+
+            if (this.direction.x <= 0)
+            {
                 transform.localScale = new Vector3(1, 1, 1);
             }
             else
@@ -118,7 +136,6 @@ public class AiView1 : MonoBehaviour
 
         StartCoroutine("ChangeMovement");
     }
-
 
     //void sight()
     //{

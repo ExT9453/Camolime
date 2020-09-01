@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
-  m_Name: soldier_gun_SkeletonData
+  m_Name: dron_grap_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: b66e4daef0564c24e872d22c9554e4f0, type: 2}
+  - {fileID: 11400000, guid: 6007ec6829c28d94ca33a07a43388013, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 05277f8969ecbb447a2e0b644db06ec2, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 024c58e6b3ca77643ac9a79e69cd1c75, type: 3}
   skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []
   defaultMix: 0.2
-  controller: {fileID: 9100000, guid: 153245209621d86428d44fbebc40660c, type: 2}
+  controller: {fileID: 9100000, guid: d59382d8d65622e4aaf589df93cd8b65, type: 2}
