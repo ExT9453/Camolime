@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class AnimTest : MonoBehaviour
+public class AnimMove : MonoBehaviour
 {
     Rigidbody rigidbody;
     Animator animator;
+    MeshRenderer meshRenderer;
 
-    float horizontalMove;
-    float verticalMove;
+    public float horizontalMove;
+    public float verticalMove;
+    bool hideCheck;
+
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        meshRenderer = GetComponent<MeshRenderer>();
+
+        hideCheck = false;
     }
 
     private void Update()
@@ -22,12 +28,14 @@ public class AnimTest : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal");
         verticalMove = Input.GetAxisRaw("Vertical");
 
-        AnimationUpdate();
+        MoveAnimationUpdate();
+        ActionAnimationUpdate();
+        Debug.Log("hideCheck = " + hideCheck);
     }
 
-    void AnimationUpdate()
+    void MoveAnimationUpdate()
     {
-        if(horizontalMove == 0)
+        if (horizontalMove == 0)
         {
             animator.SetBool("_SideMove", false);
         }
@@ -54,5 +62,26 @@ public class AnimTest : MonoBehaviour
         {
             animator.SetBool("_DownMove", true);
         }
+
+    }
+
+    void ActionAnimationUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (hideCheck == false)
+            {
+                animator.SetBool("_Hide", true);
+                animator.SetFloat("_ReversePlay", 1.0f);
+                hideCheck = true;
+            }
+            else
+            {
+                animator.SetBool("_Hide", false);
+                animator.SetFloat("_ReversePlay", -1.0f);
+                hideCheck = false;
+            }
+        }
+
     }
 }

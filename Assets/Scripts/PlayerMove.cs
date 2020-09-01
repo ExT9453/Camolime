@@ -222,7 +222,7 @@ public class PlayerMove : MonoBehaviour
                     IsTweing = true;
                     chrSize -= 1;
                     //Quaternion rotation = Quaternion.identity;
-                   // rotation.eulerAngles = new Vector3(60, 0, 0);
+                    //rotation.eulerAngles = new Vector3(60, 0, 0);
                     GameObject tweInstance = (GameObject)Instantiate(twePrefab, chrPos,Quaternion.identity);
                     //Instance.name = "twespit";
                     if (chrRenderer.flipX == false)
