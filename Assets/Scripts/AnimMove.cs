@@ -45,12 +45,12 @@ public class AnimMove : MonoBehaviour
         if (horizontalMove == 1)
         {
             animator.SetBool("_SideMove", true);
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
         }
         if (horizontalMove == -1)
         {
             animator.SetBool("_SideMove", true);
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-0.6f, 0.6f, 0.6f);
         }
         if (verticalMove == 1)
         {
