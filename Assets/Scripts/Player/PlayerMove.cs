@@ -358,12 +358,12 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             animator.SetTrigger("_Nyam");
-            chrColor = 2;
+            //chrColor = 2;
+            Debug.Log("000");
 
             if (collision.gameObject.CompareTag("blueOb"))
             {
                 colorManager obBlue = collision.gameObject.GetComponent<colorManager>();
-                
                 if (obBlue.colorOn)
                 {
                     //colorManager.colorOn = false;
@@ -375,10 +375,12 @@ public class PlayerMove : MonoBehaviour
 
             if (collision.gameObject.CompareTag("redOb"))
             {
+                Debug.Log("111");
                 colorManager obRed = collision.gameObject.GetComponent<colorManager>();
 
                 if (obRed.colorOn)
                 {
+                    Debug.Log("222");
                     //colorManager.colorOn = false;
                     obRed.colorOn = false;
                     chrColor = 2;
