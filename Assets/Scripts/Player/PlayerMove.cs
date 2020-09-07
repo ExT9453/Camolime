@@ -128,6 +128,15 @@ public class PlayerMove : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
+
+            if (IsHiding && hidingOff)
+            {
+                IsHiding = false;
+                IsNormal = true;
+                hidingOff = false;
+                Debug.Log("a");
+
+            }
             if (hideCheck == false)
             {
                 animator.SetBool("_Hide", true);
@@ -139,15 +148,6 @@ public class PlayerMove : MonoBehaviour
                 animator.SetBool("_Hide", false);
                 animator.SetFloat("_ReversePlay", -1.0f);
                 hideCheck = false;
-            }
-
-            if (IsHiding && hidingOff)
-            {
-                IsHiding = false;
-                IsNormal = true;
-                hidingOff = false;
-                Debug.Log("a");
-
             }
         }
 
