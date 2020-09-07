@@ -41,9 +41,9 @@ public class PlayerNyam : MonoBehaviour
     {
         if (timerOn == false)
         {
-            if (collision.gameObject.CompareTag("blueOb") || 
-                collision.gameObject.CompareTag("redOb") || 
-                collision.gameObject.CompareTag("greenOb"))
+            if (collision.gameObject.CompareTag("blueG") || 
+                collision.gameObject.CompareTag("redG") || 
+                collision.gameObject.CompareTag("greenG"))
             {
                 if (nowtrigger == null)
                 {
@@ -58,8 +58,8 @@ public class PlayerNyam : MonoBehaviour
                     }
                     if (collision.gameObject.CompareTag("redG"))
                     {
-
                         nowtrigger.gameObject.tag = "redG";
+                        Debug.Log("빨강 충돌 중");
                     }
                     if (collision.gameObject.CompareTag("greenG"))
                     {
@@ -95,8 +95,10 @@ public class PlayerNyam : MonoBehaviour
                         {
                             PlayerMove.instance.chrColor = 2;
                             PlayerMove.instance.chrSize += 1;
-
+                            Debug.Log("냠 완료");
                             Destroy(nowtrigger.gameObject);
+                            nowtrigger = null;
+                            timerOn = true;
 
                         }
 
@@ -104,8 +106,10 @@ public class PlayerNyam : MonoBehaviour
                         {
                             PlayerMove.instance.chrColor = 3;
                             PlayerMove.instance.chrSize += 1;
-
+                            Debug.Log("냠 완료");
                             Destroy(nowtrigger.gameObject);
+                            nowtrigger = null;
+                            timerOn = true;
 
                         }
 
@@ -137,8 +141,6 @@ public class PlayerNyam : MonoBehaviour
                                     PlayerMove.instance.hidingDelay = 2;
 
                                     Debug.Log("숨기");
-
-
                                 }
                                 else
                                 {
@@ -146,7 +148,7 @@ public class PlayerNyam : MonoBehaviour
                                 }
                             }
                         }
-                        if (nowtrigger.gameObject.CompareTag("redOb"))
+                        if (nowtrigger.gameObject.CompareTag("redG"))
                         {
                             bool redColorOn = nowtrigger.gameObject.GetComponent<colorManager>().colorOn;
                             if (redColorOn)
@@ -158,8 +160,8 @@ public class PlayerNyam : MonoBehaviour
                                     PlayerMove.instance.hidingOff = false;
                                     PlayerMove.instance.hidingDelay = 2;
 
-                                    
-                                    
+                                    //animator.SetBool("_Hide", true);
+                                    //animator.SetFloat("_ReversePlay", 1.0f);
 
                                     Debug.Log("숨기");
                                 }
@@ -175,6 +177,10 @@ public class PlayerNyam : MonoBehaviour
                             {
                                 PlayerMove.instance.IsHiding = true;
                                 PlayerMove.instance.IsNormal = false;
+                                PlayerMove.instance.hidingOff = false;
+                                PlayerMove.instance.hidingDelay = 2;
+
+                                Debug.Log("숨기");
                             }
                             else
                             {

@@ -44,6 +44,7 @@ public class PlayerMove : MonoBehaviour
     //숨기 관련
     public bool IsHiding;
     public bool hidingOff;
+    public bool firstHiding;
     public float hidingDelay;
 
 
@@ -80,6 +81,7 @@ public class PlayerMove : MonoBehaviour
         IsHiding = false;
         hidingOff = false;
         hideCheck = false;
+        firstHiding = true;
     }
 
     // Update is called once per frame
@@ -117,11 +119,11 @@ public class PlayerMove : MonoBehaviour
         if (!hidingOff&&IsHiding)
         {
             
-            if (hidingDelay > 0)
+            if (hidingDelay > 0 && firstHiding == false)
             {
                 hidingDelay -= Time.deltaTime;
             }
-            if (hidingDelay <= 0)
+            if (hidingDelay <= 0 || firstHiding == true)
             {
                 hidingOff = true;
             }
@@ -134,20 +136,21 @@ public class PlayerMove : MonoBehaviour
                 IsHiding = false;
                 IsNormal = true;
                 hidingOff = false;
+                firstHiding = false;
                 Debug.Log("a");
+                if (hideCheck == false)
+                {
+                    animator.SetBool("_Hide", true);
+                    animator.SetFloat("_ReversePlay", 1.0f);
+                    hideCheck = true;
+                }
+                else
+                {
+                    animator.SetBool("_Hide", false);
+                    animator.SetFloat("_ReversePlay", -1.0f);
+                    hideCheck = false;
+                }
 
-            }
-            if (hideCheck == false)
-            {
-                animator.SetBool("_Hide", true);
-                animator.SetFloat("_ReversePlay", 1.0f);
-                hideCheck = true;
-            }
-            else
-            {
-                animator.SetBool("_Hide", false);
-                animator.SetFloat("_ReversePlay", -1.0f);
-                hideCheck = false;
             }
         }
 
@@ -250,19 +253,17 @@ public class PlayerMove : MonoBehaviour
             {
                 if (chrSize > 1)
                 {
-                    if (chrColor==0)
-                    {
-                        twecolor = 0;
-                    }
-                    else if (chrColor==1)
+                    if (chrColor== 1)
                     {
                         twecolor = 1;
-
                     }
                     else if (chrColor==2)
                     {
                         twecolor = 2;
-
+                    }
+                    else if (chrColor==3)
+                    {
+                        twecolor = 3;
                     }
                     IsNormal = false;
                     IsTweing = true;
@@ -287,7 +288,6 @@ public class PlayerMove : MonoBehaviour
 
                         //여기서 애니메이션
                         animator.SetTrigger("_Twe");
-
                     }
                 }
             }
@@ -384,8 +384,14 @@ public class PlayerMove : MonoBehaviour
 
             if (collision.gameObject.CompareTag("greenOb"))
             {
-                //colorManager.colorOn = false;
-                chrColor = 3;
+                colorManager obRed = collision.gameObject.GetComponent<colorManager>();
+
+                if (obRed.colorOn)
+                {
+                    //colorManager.colorOn = false;
+                    obRed.colorOn = false;
+                    chrColor = 3;
+                }
             }
         }
 
