@@ -80,8 +80,6 @@ public class PlayerMove : MonoBehaviour
         IsHiding = false;
         hidingOff = false;
         hideCheck = false;
-
-        material.color = Color.red;
     }
 
     // Update is called once per frame
@@ -130,6 +128,19 @@ public class PlayerMove : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (hideCheck == false)
+            {
+                animator.SetBool("_Hide", true);
+                animator.SetFloat("_ReversePlay", 1.0f);
+                hideCheck = true;
+            }
+            else
+            {
+                animator.SetBool("_Hide", false);
+                animator.SetFloat("_ReversePlay", -1.0f);
+                hideCheck = false;
+            }
+
             if (IsHiding && hidingOff)
             {
                 IsHiding = false;
@@ -137,18 +148,6 @@ public class PlayerMove : MonoBehaviour
                 hidingOff = false;
                 Debug.Log("a");
 
-                if (hideCheck == false)
-                {
-                    animator.SetBool("_Hide", true);
-                    animator.SetFloat("_ReversePlay", 1.0f);
-                    hideCheck = true;
-                }
-                else
-                {
-                    animator.SetBool("_Hide", false);
-                    animator.SetFloat("_ReversePlay", -1.0f);
-                    hideCheck = false;
-                }
             }
         }
 
@@ -358,8 +357,6 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             animator.SetTrigger("_Nyam");
-            //chrColor = 2;
-            Debug.Log("000");
 
             if (collision.gameObject.CompareTag("blueOb"))
             {
@@ -375,12 +372,10 @@ public class PlayerMove : MonoBehaviour
 
             if (collision.gameObject.CompareTag("redOb"))
             {
-                Debug.Log("111");
                 colorManager obRed = collision.gameObject.GetComponent<colorManager>();
 
                 if (obRed.colorOn)
                 {
-                    Debug.Log("222");
                     //colorManager.colorOn = false;
                     obRed.colorOn = false;
                     chrColor = 2;
