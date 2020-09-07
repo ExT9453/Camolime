@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
     public float h, v;
     Vector3 moveDirection;
     public Sprite[] chrColorSprite;
-    private SpriteRenderer chrRenderer;
+    //private SpriteRenderer chrRenderer;
     public float JumpPower;
     public float speed = 7f;
     public bool IsMoving;
@@ -58,8 +58,8 @@ public class PlayerMove : MonoBehaviour
         chrColor = 0;
         AS = GetComponent<AudioSource>();
         rigid = GetComponent<Rigidbody>();
-        chrRenderer = GetComponent<SpriteRenderer>();
-        chrRenderer.sprite = chrColorSprite[0];
+        //chrRenderer = GetComponent<SpriteRenderer>();
+        //chrRenderer.sprite = chrColorSprite[0];
 
 
     }
@@ -76,22 +76,23 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        chrPos = this.gameObject.transform.position+new Vector3(0.5f,1f,0f);
+
         moveObject();
         //Jump();
         twe();
-        chrPos = this.gameObject.transform.position;
         if (chrColor==0)
         {
-            chrRenderer.sprite = chrColorSprite[0];
+           // chrRenderer.sprite = chrColorSprite[0];
         }
         else if (chrColor==1)
         {
-            chrRenderer.sprite = chrColorSprite[1];
+           // chrRenderer.sprite = chrColorSprite[1];
 
         }
         else if (chrColor==2)
         {
-            chrRenderer.sprite = chrColorSprite[2];
+          //  chrRenderer.sprite = chrColorSprite[2];
 
         }
 
@@ -138,14 +139,24 @@ public class PlayerMove : MonoBehaviour
             //IsNormal = false;
             if (h < 0)
             {
-                chrRenderer.flipX = true;
+                //chrRenderer.flipX = true;
+                transform.GetChild(0).localScale = new Vector3(-1f, 1f, 1f);
+
                 
 
             }
             else if (h > 0)
             {
 
-                chrRenderer.flipX = false;
+               // chrRenderer.flipX = false;
+                transform.GetChild(0).localScale = new Vector3(1f, 1f, 1f);
+
+            }
+            else if(h==0)
+            {
+                transform.GetChild(0).localScale = new Vector3(1f, 1f, 1f);
+
+
             }
 
             if(h==0 && v==0)
@@ -165,13 +176,14 @@ public class PlayerMove : MonoBehaviour
 
             transform.Translate(Vector3.right.normalized * speed * Time.smoothDeltaTime * h, Space.World);
             transform.Translate(Vector3.forward.normalized * speed * Time.smoothDeltaTime * v, Space.World);
-            moveDirection = new Vector3(h, 0, v);
-            moveDirection.Normalize();
+            //moveDirection = new Vector3(h, 0, v);
+            //moveDirection.Normalize();
            
             //playerRb.AddForce(moveDirection * speed);
             //rigid.velocity = (moveDirection * speed);
 
         }
+      
     }
 
     /*
@@ -225,13 +237,20 @@ public class PlayerMove : MonoBehaviour
                     //rotation.eulerAngles = new Vector3(60, 0, 0);
                     GameObject tweInstance = (GameObject)Instantiate(twePrefab, chrPos,Quaternion.identity);
                     //Instance.name = "twespit";
-                    if (chrRenderer.flipX == false)
+                    //if (chrRenderer.flipX == false)
+                    if(transform.GetChild(0).localScale.x>=0)
                     {
                         tweInstance.GetComponent<Rigidbody>().AddForce(Vector3.right * tweSpeed, ForceMode.Impulse);
+                        tweInstance.GetComponent<SpriteRenderer>().flipX=false;
+
+                        //여기서 애니메이션
                     }
-                    else if (chrRenderer.flipX == true)
+                    else if (transform.GetChild(0).localScale.x<0)
                     {
                         tweInstance.GetComponent<Rigidbody>().AddForce(Vector3.left * tweSpeed, ForceMode.Impulse);
+                        tweInstance.GetComponent<SpriteRenderer>().flipX=true;
+
+                        //여기서 애니메이션
 
                     }
 
@@ -277,6 +296,7 @@ public class PlayerMove : MonoBehaviour
                 IsJumping = true;
                 moveDirection = new Vector3(h, 1, v);
                 rigid.velocity = Vector3.zero;
+
                 //moveDirection.Normalize();
                 Vector3 vectornormal = moveDirection.normalized;
                 speed = 0;
@@ -296,7 +316,7 @@ public class PlayerMove : MonoBehaviour
                 {
                     zSpeed = -9;
                 }
-                rigid.velocity = vectornormal + new Vector3(xSpeed, JumpPower*0.75f, zSpeed);
+                rigid.velocity = /*vectornormal +*/ new Vector3(xSpeed, JumpPower*0.75f, zSpeed);
                // rigid.AddForce(vectornormal* JumpPower, ForceMode.Impulse);
                 Debug.Log("jump");
             }

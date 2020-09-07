@@ -656,6 +656,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asphalt_road (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6825225899403635174, guid: 6bce59f2e0b89734c981bd8dc15129ea,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bce59f2e0b89734c981bd8dc15129ea, type: 3}
 --- !u!1 &435675254
@@ -2204,7 +2209,7 @@ Transform:
   m_GameObject: {fileID: 1094258812}
   m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 946136168}
   m_RootOrder: 0
@@ -2724,6 +2729,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Asphalt_road (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825225899403635174, guid: 6bce59f2e0b89734c981bd8dc15129ea,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bce59f2e0b89734c981bd8dc15129ea, type: 3}
@@ -4410,6 +4420,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asphalt_road (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6825225899403635174, guid: 6bce59f2e0b89734c981bd8dc15129ea,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bce59f2e0b89734c981bd8dc15129ea, type: 3}
 --- !u!4 &2054801655 stripped
@@ -5171,6 +5186,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_001
       objectReference: {fileID: 0}
+    - target: {fileID: 4403482642585304995, guid: 4563f5e568489b942b22639810aea21f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4563f5e568489b942b22639810aea21f, type: 3}
 --- !u!1001 &5810417401247415336
@@ -5248,12 +5268,12 @@ PrefabInstance:
     - target: {fileID: 5810417399797999754, guid: 2fa1257874eb103479e91ed39322d3c9,
         type: 3}
       propertyPath: m_Size.y
-      value: 3.4263215
+      value: 3.982387
       objectReference: {fileID: 0}
     - target: {fileID: 5810417399797999754, guid: 2fa1257874eb103479e91ed39322d3c9,
         type: 3}
       propertyPath: m_Center.y
-      value: -0.7718401
+      value: 1.1358333
       objectReference: {fileID: 0}
     - target: {fileID: 5810417399797999799, guid: 2fa1257874eb103479e91ed39322d3c9,
         type: 3}
@@ -5358,6 +5378,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Asphalt_road
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825225899403635174, guid: 6bce59f2e0b89734c981bd8dc15129ea,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bce59f2e0b89734c981bd8dc15129ea, type: 3}

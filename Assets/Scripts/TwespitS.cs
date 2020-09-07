@@ -67,7 +67,7 @@ public class TwespitS : MonoBehaviour
             if (PlayerMove.twecolor == 0)
             {
                 GameObject nyamInstanceBlue = (GameObject)Instantiate(nyamPrefabBlue, twePos, rotation/*Quaternion.identity*/);
-                Destroy(this.gameObject);
+               // Destroy(this.gameObject);
             }
             else if (PlayerMove.twecolor == 1)
             {
