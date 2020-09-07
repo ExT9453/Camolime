@@ -80,7 +80,6 @@ public class AiView1 : MonoBehaviour
         // 일정거리 안에 있을 시, 해당 방향으로 무빙
         if (distance <= 10.0f)
         {
-            Debug.Log("거리 안");
             this.transform.position = new Vector3(transform.position.x + (direction.x * velocity),
                                                     transform.position.y,
                                                     transform.position.z + (direction.z * velocity)
@@ -100,7 +99,6 @@ public class AiView1 : MonoBehaviour
         else
         {
             velocity = 0.0f;
-            Debug.Log("거리 밖");
             movementFlag = Random.Range(0, 3);
             //yield return new WaitForSeconds(3f);
             //StartCoroutine("ChangeMovement");

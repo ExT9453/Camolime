@@ -2138,7 +2138,6 @@ MonoBehaviour:
   IsNyaming: 0
   IsHiding: 0
   hidingOff: 0
-  firstHiding: 0
   hidingDelay: 0
 --- !u!54 &946136170
 Rigidbody:
@@ -2411,7 +2410,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1025919252}
   - component: {fileID: 1025919253}
-  - component: {fileID: 1025919254}
   m_Layer: 8
   m_Name: 1
   m_TagString: Untagged
@@ -2446,18 +2444,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0.423, z: 0}
---- !u!114 &1025919254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1025919251}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b0c9b930b8fbd24db53d098de63874c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1037114917
 GameObject:
   m_ObjectHideFlags: 0

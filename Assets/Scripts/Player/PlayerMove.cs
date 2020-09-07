@@ -44,7 +44,6 @@ public class PlayerMove : MonoBehaviour
     //숨기 관련
     public bool IsHiding;
     public bool hidingOff;
-    public bool firstHiding;
     public float hidingDelay;
 
 
@@ -81,7 +80,6 @@ public class PlayerMove : MonoBehaviour
         IsHiding = false;
         hidingOff = false;
         hideCheck = false;
-        firstHiding = true;
     }
 
     // Update is called once per frame
@@ -119,13 +117,15 @@ public class PlayerMove : MonoBehaviour
         if (!hidingOff&&IsHiding)
         {
             
-            if (hidingDelay > 0 && firstHiding == false)
+            if (hidingDelay > 0)
             {
                 hidingDelay -= Time.deltaTime;
+                Debug.Log("딜레이중");
             }
-            if (hidingDelay <= 0 || firstHiding == true)
+            if (hidingDelay <= 0)
             {
                 hidingOff = true;
+                Debug.Log("딜레이 끝");
             }
         }
         if (Input.GetKeyDown(KeyCode.Space))
@@ -136,20 +136,19 @@ public class PlayerMove : MonoBehaviour
                 IsHiding = false;
                 IsNormal = true;
                 hidingOff = false;
-                firstHiding = false;
                 Debug.Log("a");
-                if (hideCheck == false)
-                {
-                    animator.SetBool("_Hide", true);
-                    animator.SetFloat("_ReversePlay", 1.0f);
-                    hideCheck = true;
-                }
-                else
-                {
-                    animator.SetBool("_Hide", false);
-                    animator.SetFloat("_ReversePlay", -1.0f);
-                    hideCheck = false;
-                }
+                animator.SetBool("_Hide", false);
+                animator.SetFloat("_ReversePlay", -1.0f);
+                //if (hideCheck == false)
+                //{
+                //    hideCheck = true;
+                //}
+                //else
+                //{
+                //    hideCheck = false;
+                //}
+
+                
 
             }
         }
@@ -315,7 +314,7 @@ public class PlayerMove : MonoBehaviour
         {
             IsJumping = false;
             speed = 7f;
-            Debug.Log("on ground");
+            //Debug.Log("on ground");
         }
         if (Input.GetKeyDown(KeyCode.K))
         {

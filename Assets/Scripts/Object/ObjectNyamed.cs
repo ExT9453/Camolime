@@ -30,7 +30,6 @@ public class ObjectNyamed : MonoBehaviour
         // 일정거리 안에 있을 시
         if (distance >= 2.0f)
         {
-            Debug.Log("냠 불가");
             animator.SetBool("_Close", false);
 
             //if(this.direction.x<=0)
@@ -42,8 +41,6 @@ public class ObjectNyamed : MonoBehaviour
         }
         else
         {
-            Debug.Log("냠 가능");
-            
             animator.SetBool("_Close", true);
 
             if (Input.GetKeyDown(KeyCode.J))

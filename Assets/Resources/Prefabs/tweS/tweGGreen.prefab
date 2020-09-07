@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3320662877809057863}
   - component: {fileID: 2485035084429530299}
   - component: {fileID: 3582024494278166181}
-  - component: {fileID: -2777854493340817691}
   m_Layer: 0
   m_Name: tweGGreen
   m_TagString: greenG
@@ -96,16 +95,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-2777854493340817691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8447818708629205873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e1c8d185cdcfb7448fe9a658ac1bd18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorOn: 1

@@ -41,9 +41,9 @@ public class PlayerNyam : MonoBehaviour
     {
         if (timerOn == false)
         {
-            if (collision.gameObject.CompareTag("blueG") || 
-                collision.gameObject.CompareTag("redG") || 
-                collision.gameObject.CompareTag("greenG"))
+            if (collision.gameObject.CompareTag("blueOb") || 
+                collision.gameObject.CompareTag("redOb") || 
+                collision.gameObject.CompareTag("greenOb"))
             {
                 if (nowtrigger == null)
                 {
@@ -79,10 +79,10 @@ public class PlayerNyam : MonoBehaviour
 
                     if (PlayerMove.instance.IsNormal && !PlayerMove.instance.IsTweing && PlayerMove.instance.chrSize < 5 && !PlayerMove.instance.IsJumping)
                     {
-                        PlayerMove.instance.IsNormal = false;
-                        PlayerMove.instance.IsTweing = true;
-                        if (nowtrigger.gameObject.CompareTag("blueOb"))
+                        if (nowtrigger.gameObject.CompareTag("blueG"))
                         {
+                            PlayerMove.instance.IsNormal = false;
+                            PlayerMove.instance.IsTweing = true;
                             PlayerMove.instance.chrColor = 1;
                             PlayerMove.instance.chrSize += 1;
                             Debug.Log("냠 완료");
@@ -91,8 +91,10 @@ public class PlayerNyam : MonoBehaviour
                             timerOn = true;
 
                         }
-                        else if (nowtrigger.gameObject.CompareTag("redOb"))
+                        else if (nowtrigger.gameObject.CompareTag("redG"))
                         {
+                            PlayerMove.instance.IsNormal = false;
+                            PlayerMove.instance.IsTweing = true;
                             PlayerMove.instance.chrColor = 2;
                             PlayerMove.instance.chrSize += 1;
                             Debug.Log("냠 완료");
@@ -102,8 +104,10 @@ public class PlayerNyam : MonoBehaviour
 
                         }
 
-                        else if (nowtrigger.gameObject.CompareTag("greenOb"))
+                        else if (nowtrigger.gameObject.CompareTag("greenG"))
                         {
+                            PlayerMove.instance.IsNormal = false;
+                            PlayerMove.instance.IsTweing = true;
                             PlayerMove.instance.chrColor = 3;
                             PlayerMove.instance.chrSize += 1;
                             Debug.Log("냠 완료");
@@ -148,7 +152,7 @@ public class PlayerNyam : MonoBehaviour
                                 }
                             }
                         }
-                        if (nowtrigger.gameObject.CompareTag("redG"))
+                        if (nowtrigger.gameObject.CompareTag("redOb"))
                         {
                             bool redColorOn = nowtrigger.gameObject.GetComponent<colorManager>().colorOn;
                             if (redColorOn)
@@ -160,8 +164,8 @@ public class PlayerNyam : MonoBehaviour
                                     PlayerMove.instance.hidingOff = false;
                                     PlayerMove.instance.hidingDelay = 2;
 
-                                    //animator.SetBool("_Hide", true);
-                                    //animator.SetFloat("_ReversePlay", 1.0f);
+                                    animator.SetBool("_Hide", true);
+                                    animator.SetFloat("_ReversePlay", 1.0f);
 
                                     Debug.Log("숨기");
                                 }
