@@ -1,208 +1,229 @@
 
 Camolime.png
-size: 1992,745
+size: 2032,807
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 Dead_back
   rotate: true
-  xy: 898, 76
+  xy: 808, 318
   size: 239, 96
   orig: 239, 96
   offset: 0, 0
   index: -1
 Dead_front
-  rotate: false
-  xy: 996, 14
+  rotate: true
+  xy: 1003, 568
   size: 237, 97
   orig: 237, 97
   offset: 0, 0
   index: -1
 Dead_side
-  rotate: false
-  xy: 1235, 5
+  rotate: true
+  xy: 1004, 329
   size: 237, 97
   orig: 237, 97
   offset: 0, 0
   index: -1
 Hide_back
   rotate: false
-  xy: 528, 267
+  xy: 1356, 388
   size: 183, 206
   orig: 183, 206
   offset: 0, 0
   index: -1
 Hide_back-sc
   rotate: true
-  xy: 201, 221
+  xy: 1120, 118
   size: 209, 152
   orig: 209, 152
   offset: 0, 0
   index: -1
 Hide_back002
   rotate: true
-  xy: 2, 33
+  xy: 906, 318
   size: 239, 96
   orig: 239, 96
   offset: 0, 0
   index: -1
 Hide_back003
   rotate: true
-  xy: 355, 221
+  xy: 1202, 357
   size: 209, 152
   orig: 209, 152
   offset: 0, 0
   index: -1
 Hide_fron-sc
-  rotate: false
-  xy: 509, 113
+  rotate: true
+  xy: 1300, 596
   size: 209, 152
   orig: 209, 152
   offset: 0, 0
   index: -1
 Hide_front
-  rotate: false
-  xy: 1474, 5
+  rotate: true
+  xy: 1102, 568
   size: 237, 97
   orig: 237, 97
   offset: 0, 0
   index: -1
 Hide_front001
   rotate: false
-  xy: 713, 267
+  xy: 1454, 599
   size: 183, 206
   orig: 183, 206
   offset: 0, 0
   index: -1
 Hide_front002
   rotate: true
-  xy: 100, 35
+  xy: 1021, 90
   size: 237, 97
   orig: 237, 97
   offset: 0, 0
   index: -1
 Hide_front003
   rotate: true
-  xy: 720, 56
+  xy: 1274, 146
   size: 209, 152
   orig: 209, 152
   offset: 0, 0
   index: -1
 Hide_side
-  rotate: false
-  xy: 199, 122
+  rotate: true
+  xy: 1103, 329
   size: 237, 97
   orig: 237, 97
   offset: 0, 0
   index: -1
 Hide_side001
-  rotate: false
-  xy: 996, 113
+  rotate: true
+  xy: 1428, 5
   size: 173, 202
   orig: 173, 202
   offset: 0, 0
   index: -1
 Hide_side002
-  rotate: false
-  xy: 199, 23
+  rotate: true
+  xy: 1201, 568
   size: 237, 97
   orig: 237, 97
   offset: 0, 0
   index: -1
 Hide_side003
-  rotate: false
-  xy: 2, 274
+  rotate: true
+  xy: 1836, 44
   size: 197, 156
   orig: 197, 156
   offset: 0, 0
   index: -1
 Spat!
-  rotate: false
-  xy: 1360, 308
+  rotate: true
+  xy: 1824, 447
   size: 173, 202
   orig: 173, 202
   offset: 0, 0
   index: -1
 Yum_sc001
-  rotate: true
-  xy: 438, 34
+  rotate: false
+  xy: 1158, 52
   size: 185, 64
   orig: 185, 64
   offset: 0, 0
   index: -1
 Yum_sc002
   rotate: false
-  xy: 504, 41
+  xy: 1021, 18
   size: 135, 70
   orig: 138, 72
   offset: 2, 1
   index: -1
 Yum_sc003
-  rotate: false
-  xy: 927, 317
+  rotate: true
+  xy: 808, 559
   size: 246, 193
   orig: 248, 195
   offset: 1, 1
   index: -1
 Yum_sc004
   rotate: false
-  xy: 528, 475
+  xy: 622, 11
   size: 397, 268
   orig: 399, 270
   offset: 1, 1
   index: -1
 Yum_sc005
-  rotate: false
-  xy: 2, 432
+  rotate: true
+  xy: 495, 281
   size: 524, 311
   orig: 526, 313
   offset: 1, 1
   index: -1
 Yum_sc006
   rotate: true
-  xy: 1732, 160
+  xy: 235, 222
   size: 583, 258
   orig: 585, 260
   offset: 1, 1
   index: -1
 Yum_sc007
-  rotate: false
-  xy: 927, 512
+  rotate: true
+  xy: 2, 171
   size: 634, 231
   orig: 636, 233
   offset: 1, 1
   index: -1
 Yum_sc008
-  rotate: true
-  xy: 1563, 125
+  rotate: false
+  xy: 2, 2
   size: 618, 167
   orig: 620, 169
   offset: 1, 1
   index: -1
 Yum_side_sc
-  rotate: false
-  xy: 1732, 2
+  rotate: true
+  xy: 1836, 243
   size: 202, 156
   orig: 207, 156
   offset: 0, 0
   index: -1
 back
   rotate: false
-  xy: 1175, 304
+  xy: 1428, 180
+  size: 183, 206
+  orig: 183, 206
+  offset: 0, 0
+  index: -1
+back_attack
+  rotate: false
+  xy: 1541, 391
   size: 183, 206
   orig: 183, 206
   offset: 0, 0
   index: -1
 front
+  rotate: false
+  xy: 1639, 599
+  size: 183, 206
+  orig: 183, 206
+  offset: 0, 0
+  index: -1
+front_attack
   rotate: true
-  xy: 1171, 119
+  xy: 1824, 622
   size: 183, 206
   orig: 183, 206
   offset: 0, 0
   index: -1
 side
+  rotate: true
+  xy: 1632, 12
+  size: 173, 202
+  orig: 173, 202
+  offset: 0, 0
+  index: -1
+side_attack
   rotate: false
-  xy: 1379, 104
+  xy: 1613, 187
   size: 173, 202
   orig: 173, 202
   offset: 0, 0

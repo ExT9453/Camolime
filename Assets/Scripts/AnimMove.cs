@@ -45,12 +45,12 @@ public class AnimMove : MonoBehaviour
         if (horizontalMove == 1)
         {
             animator.SetBool("_SideMove", true);
-            transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
         if (horizontalMove == -1)
         {
             animator.SetBool("_SideMove", true);
-            transform.localScale = new Vector3(-0.6f, 0.6f, 0.6f);
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
         if (verticalMove == 1)
         {
@@ -89,6 +89,11 @@ public class AnimMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             animator.SetTrigger("_Nyam");
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            animator.SetTrigger("_Jump");
         }
 
     }

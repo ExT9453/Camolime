@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Camolime_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: ab55812e9a676c340b98626708e68405, type: 2}
+  - {fileID: 11400000, guid: 67327d99926568145ac22a2c0f250eb7, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: b7e3d39485c625a43a6429cb1bee1ce9, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 254040017800cba4f931bb8fb26af64b, type: 3}
   skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []
   duration: []
   defaultMix: 0.2
-  controller: {fileID: 9100000, guid: 8db1f7cc0202cf549b42550cee123946, type: 2}
+  controller: {fileID: 9100000, guid: c112aba6d96973d469ab81d93fb9f96b, type: 2}
