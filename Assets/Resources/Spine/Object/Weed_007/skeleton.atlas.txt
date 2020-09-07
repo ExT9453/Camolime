@@ -1,0 +1,27 @@
+
+skeleton.png
+size: 637,374
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+weed_007
+  rotate: true
+  xy: 219, 10
+  size: 362, 207
+  orig: 364, 209
+  offset: 1, 1
+  index: -1
+weed_007_off
+  rotate: true
+  xy: 428, 10
+  size: 362, 207
+  orig: 364, 209
+  offset: 1, 1
+  index: -1
+weed_007_on
+  rotate: true
+  xy: 2, 2
+  size: 370, 215
+  orig: 372, 217
+  offset: 1, 1
+  index: -1

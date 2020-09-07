@@ -1,0 +1,27 @@
+
+skeleton.png
+size: 262,176
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fire_hydrant
+  rotate: false
+  xy: 177, 5
+  size: 83, 169
+  orig: 83, 169
+  offset: 0, 0
+  index: -1
+fire_hydrant_off
+  rotate: true
+  xy: 2, 2
+  size: 83, 169
+  orig: 83, 169
+  offset: 0, 0
+  index: -1
+fire_hydrant_on
+  rotate: true
+  xy: 2, 87
+  size: 87, 173
+  orig: 87, 173
+  offset: 0, 0
+  index: -1

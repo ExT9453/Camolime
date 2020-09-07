@@ -1,0 +1,27 @@
+
+skeleton.png
+size: 234,293
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+board_M_01
+  rotate: false
+  xy: 2, 98
+  size: 226, 94
+  orig: 226, 94
+  offset: 0, 0
+  index: -1
+board_M_01_off
+  rotate: false
+  xy: 2, 2
+  size: 226, 94
+  orig: 226, 94
+  offset: 0, 0
+  index: -1
+board_M_01_on
+  rotate: false
+  xy: 2, 194
+  size: 230, 97
+  orig: 230, 98
+  offset: 0, 1
+  index: -1
