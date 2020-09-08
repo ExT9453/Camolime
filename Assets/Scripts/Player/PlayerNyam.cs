@@ -167,7 +167,10 @@ public class PlayerNyam : MonoBehaviour
 
                                     //animator.SetBool("_Hide", true);
                                     //animator.SetFloat("_ReversePlay", 1.0f);
+
                                     PlayerMove.instance.hideanimeplay();
+
+
                                     Debug.Log("숨기");
                                 }
                                 else
