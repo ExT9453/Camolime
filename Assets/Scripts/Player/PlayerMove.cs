@@ -30,7 +30,6 @@ public class PlayerMove : MonoBehaviour
     public bool IsMoving;
     public bool IsNormal;
     public bool IsJumping;
-    public bool hideCheck;
     public int chrSize;
     Vector3 chrPos;
     public int chrColor=0;
@@ -45,9 +44,6 @@ public class PlayerMove : MonoBehaviour
     public bool IsHiding;
     public bool hidingOff;
     public float hidingDelay;
-
-
-
 
     // Start is called before the first frame update
     void Awake()
@@ -79,13 +75,13 @@ public class PlayerMove : MonoBehaviour
         IsTweing = false;
         IsHiding = false;
         hidingOff = false;
-        hideCheck = false;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         chrPos = this.gameObject.transform.position+new Vector3(0.5f,1f,0f);
+
 
         moveObject();
         //Jump();
@@ -137,19 +133,10 @@ public class PlayerMove : MonoBehaviour
                 IsNormal = true;
                 hidingOff = false;
                 Debug.Log("a");
-                animator.SetBool("_Hide", false);
+                animator.SetBool("_Hide", true);
+                animator.SetFloat("_ReversePlay", 1.0f);
                 animator.SetFloat("_ReversePlay", -1.0f);
-                //if (hideCheck == false)
-                //{
-                //    hideCheck = true;
-                //}
-                //else
-                //{
-                //    hideCheck = false;
-                //}
-
-                
-
+                animator.SetBool("_Hide", false);
             }
         }
 

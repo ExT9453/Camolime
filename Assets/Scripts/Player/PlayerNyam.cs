@@ -164,8 +164,8 @@ public class PlayerNyam : MonoBehaviour
                                     PlayerMove.instance.hidingOff = false;
                                     PlayerMove.instance.hidingDelay = 2;
 
-                                    animator.SetBool("_Hide", true);
-                                    animator.SetFloat("_ReversePlay", 1.0f);
+                                    //animator.SetBool("_Hide", true);
+                                    //animator.SetFloat("_ReversePlay", 1.0f);
 
                                     Debug.Log("숨기");
                                 }
