@@ -138,7 +138,7 @@ public class PlayerNyam : MonoBehaviour
                             bool blueColorOn = collision.gameObject.GetComponent<colorManager>().colorOn;
                             if (blueColorOn)
                             {
-                                if (PlayerMove.instance.chrColor == 1)
+                                if (PlayerMove.instance.chrColor == 0)
                                 {
                                     PlayerMove.instance.IsHiding = true;
                                     PlayerMove.instance.IsNormal = false;
@@ -181,14 +181,17 @@ public class PlayerNyam : MonoBehaviour
                         }
                         if (collision.gameObject.CompareTag("greenOb"))
                         {
-                            if (PlayerMove.instance.chrColor == 3)
+                            if (PlayerMove.instance.chrColor == 1)
                             {
                                 PlayerMove.instance.IsHiding = true;
                                 PlayerMove.instance.IsNormal = false;
                                 PlayerMove.instance.hidingOff = false;
                                 PlayerMove.instance.hidingDelay = 2;
 
-                                Debug.Log("숨기");
+                            PlayerMove.instance.hideanimeplay();
+
+
+                            Debug.Log("숨기");
                             }
                             else
                             {
