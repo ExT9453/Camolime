@@ -8,13 +8,13 @@ public class PlayerNyam : MonoBehaviour
         private bool timerOn=false;
         private float timer=0f;
 
-    Animator animator;
+    //Animator animator;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -41,9 +41,9 @@ public class PlayerNyam : MonoBehaviour
     {
         if (timerOn == false)
         {
-            if (collision.gameObject.CompareTag("blueOb") || 
-                collision.gameObject.CompareTag("redOb") || 
-                collision.gameObject.CompareTag("greenOb"))
+            if (collision.gameObject.CompareTag("blueG") || 
+                collision.gameObject.CompareTag("redG") || 
+                collision.gameObject.CompareTag("greenG"))
             {
                 if (nowtrigger == null)
                 {
@@ -69,6 +69,7 @@ public class PlayerNyam : MonoBehaviour
                 else
                 {
                 }
+            }
 
                 //if (collision.gameObject.CompareTag("tweground"))
                 //{
@@ -132,9 +133,9 @@ public class PlayerNyam : MonoBehaviour
                     if (PlayerMove.instance.IsNormal && !PlayerMove.instance.IsJumping && !PlayerMove.instance.IsHiding)
                     {
                         Debug.Log("숨기 키 누름");
-                        if (nowtrigger.gameObject.CompareTag("blueOb"))
+                        if (collision.gameObject.CompareTag("blueOb"))
                         {
-                            bool blueColorOn = nowtrigger.gameObject.GetComponent<colorManager>().colorOn;
+                            bool blueColorOn = collision.gameObject.GetComponent<colorManager>().colorOn;
                             if (blueColorOn)
                             {
                                 if (PlayerMove.instance.chrColor == 1)
@@ -152,9 +153,9 @@ public class PlayerNyam : MonoBehaviour
                                 }
                             }
                         }
-                        if (nowtrigger.gameObject.CompareTag("redOb"))
+                        if (collision.gameObject.CompareTag("redOb"))
                         {
-                            bool redColorOn = nowtrigger.gameObject.GetComponent<colorManager>().colorOn;
+                            bool redColorOn = collision.gameObject.GetComponent<colorManager>().colorOn;
                             if (redColorOn)
                             {
                                 if (PlayerMove.instance.chrColor == 2)
@@ -164,9 +165,9 @@ public class PlayerNyam : MonoBehaviour
                                     PlayerMove.instance.hidingOff = false;
                                     PlayerMove.instance.hidingDelay = 2;
 
-                                    animator.SetBool("_Hide", true);
-                                    animator.SetFloat("_ReversePlay", 1.0f);
-
+                                    //animator.SetBool("_Hide", true);
+                                    //animator.SetFloat("_ReversePlay", 1.0f);
+                                    PlayerMove.instance.hideanimeplay();
                                     Debug.Log("숨기");
                                 }
                                 else
@@ -175,7 +176,7 @@ public class PlayerNyam : MonoBehaviour
                                 }
                             }
                         }
-                        if (nowtrigger.gameObject.CompareTag("greenOb"))
+                        if (collision.gameObject.CompareTag("greenOb"))
                         {
                             if (PlayerMove.instance.chrColor == 3)
                             {
@@ -209,7 +210,7 @@ public class PlayerNyam : MonoBehaviour
             {
 
             }
-        }
+        
     }
     private void OnTriggerExit(Collider Collision)
     {

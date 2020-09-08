@@ -46,11 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68840e54bcd1c64c994378c6b62f800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nyamPrefabBlue: {fileID: 549887498641342462, guid: add7acf0c1713e949812da945bf57797,
+  nyamPrefabBlue: {fileID: 8447818708629205873, guid: 05ada3cbf427eee46badf4a42578527d,
     type: 3}
-  nyamPrefabRed: {fileID: 3233171444207245852, guid: e82bc02cdc5c43e4c82db5f20f2699ad,
+  nyamPrefabRed: {fileID: 549887498641342462, guid: add7acf0c1713e949812da945bf57797,
     type: 3}
-  nyamPrefabGreen: {fileID: 8447818708629205873, guid: 05ada3cbf427eee46badf4a42578527d,
+  nyamPrefabGreen: {fileID: 3233171444207245852, guid: e82bc02cdc5c43e4c82db5f20f2699ad,
     type: 3}
   tweColorSprite:
   - {fileID: 21300000, guid: 996be15113c4f61448fe6df3f0d5a499, type: 3}

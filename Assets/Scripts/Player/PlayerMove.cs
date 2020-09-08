@@ -98,7 +98,7 @@ public class PlayerMove : MonoBehaviour
         else if (chrColor==1)
         {
             // chrRenderer.sprite = chrColorSprite[1];
-            meshRenderer.material.SetColor("_Color", Color.blue);
+            meshRenderer.material.SetColor("_Color", new Color(222/255f, 66/255f, 66/255f));
         }
         else if (chrColor==2)
         {
@@ -252,17 +252,17 @@ public class PlayerMove : MonoBehaviour
             {
                 if (chrSize > 1)
                 {
-                    if (chrColor== 1)
+                    if (chrColor== 0)
                     {
-                        twecolor = 1;
+                        twecolor = 0;
                     }
                     else if (chrColor==2)
                     {
                         twecolor = 2;
                     }
-                    else if (chrColor==3)
+                    else if (chrColor==1)
                     {
-                        twecolor = 3;
+                        twecolor = 1;
                     }
                     IsNormal = false;
                     IsTweing = true;
@@ -364,7 +364,7 @@ public class PlayerMove : MonoBehaviour
                 {
                     //colorManager.colorOn = false;
                     obBlue.colorOn = false;
-                    chrColor = 1;
+                    chrColor = 0;
                     Debug.Log("뺏음");
                 }
             }
@@ -389,7 +389,7 @@ public class PlayerMove : MonoBehaviour
                 {
                     //colorManager.colorOn = false;
                     obRed.colorOn = false;
-                    chrColor = 3;
+                    chrColor = 1;
                 }
             }
         }
@@ -415,6 +415,12 @@ public class PlayerMove : MonoBehaviour
 
         }
     }*/
+    public void hideanimeplay()
+    {
+
+        animator.SetBool("_Hide", true);
+        animator.SetFloat("_ReversePlay", 1.0f);
+    }
 
 }
 

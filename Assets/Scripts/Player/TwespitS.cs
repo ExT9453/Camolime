@@ -26,22 +26,22 @@ public class TwespitS : MonoBehaviour
 
     void Start()
     {
-        if (PlayerMove.twecolor == 1)
+        if (PlayerMove.twecolor == 0)
         {
-            colorRenderer.sprite = tweColorSprite[1];
+            colorRenderer.sprite = tweColorSprite[0];
            // colorRenderer.material = blueMT;
         }
-        else if (PlayerMove.twecolor == 2)
+        else if (PlayerMove.twecolor == 1)
         {
-            colorRenderer.sprite = tweColorSprite[2];
+            colorRenderer.sprite = tweColorSprite[1];
 
 
 
           //  colorRenderer.material = redMT;
         }
-        else if (PlayerMove.twecolor == 3)
+        else if (PlayerMove.twecolor == 2)
         {
-            colorRenderer.sprite = tweColorSprite[3];
+            colorRenderer.sprite = tweColorSprite[2];
            // colorRenderer.material = greenMT;
         }
     }
@@ -64,17 +64,17 @@ public class TwespitS : MonoBehaviour
             PlayerMove.instance.IsNormal = true;
             Quaternion rotation = Quaternion.identity;
             rotation.eulerAngles = new Vector3(60, 0, 0);
-            if (PlayerMove.twecolor == 1)
+            if (PlayerMove.twecolor == 0)
             {
                 GameObject nyamInstanceBlue = (GameObject)Instantiate(nyamPrefabBlue, twePos, rotation/*Quaternion.identity*/);
-               // Destroy(this.gameObject);
+               Destroy(this.gameObject);
             }
             else if (PlayerMove.twecolor == 2)
             {
                 GameObject nyamInstanceRed = (GameObject)Instantiate(nyamPrefabRed, twePos, rotation/*Quaternion.identity*/);
                 Destroy(this.gameObject);
             }
-            else if (PlayerMove.twecolor == 3)
+            else if (PlayerMove.twecolor == 1)
             {
                 GameObject nyamInstanceGreed = (GameObject)Instantiate(nyamPrefabGreen, twePos, rotation/*Quaternion.identity*/);
                 Destroy(this.gameObject);
