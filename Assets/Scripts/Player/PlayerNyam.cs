@@ -90,6 +90,8 @@ public class PlayerNyam : MonoBehaviour
                             Destroy(nowtrigger.gameObject);
                             nowtrigger = null;
                             timerOn = true;
+                                                PlayerMove.instance.hp+=1;
+
 
                         }
                         else if (nowtrigger.gameObject.CompareTag("redG"))
@@ -102,6 +104,7 @@ public class PlayerNyam : MonoBehaviour
                             Destroy(nowtrigger.gameObject);
                             nowtrigger = null;
                             timerOn = true;
+                                                PlayerMove.instance.hp+=1;
 
                         }
 
@@ -115,6 +118,7 @@ public class PlayerNyam : MonoBehaviour
                             Destroy(nowtrigger.gameObject);
                             nowtrigger = null;
                             timerOn = true;
+                                                PlayerMove.instance.hp+=1;
 
                         }
 

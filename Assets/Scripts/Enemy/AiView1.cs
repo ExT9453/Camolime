@@ -13,7 +13,7 @@ public class AiView1 : MonoBehaviour
     public float velocity;
     public float accelaration;
 
-    public float movePower = 1f;
+    public float movePower = 2.5f;
     int movementFlag = 0; // 0:Idle, 1:left, 2:right
 
     // Start is called before the first frame update

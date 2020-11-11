@@ -44,6 +44,7 @@ public class PlayerMove : MonoBehaviour
     public bool IsHiding;
     public bool hidingOff;
     public float hidingDelay;
+    public int hp=5;
 
     // Start is called before the first frame update
     void Awake()
@@ -109,6 +110,18 @@ public class PlayerMove : MonoBehaviour
     }
     void Update()
     {
+        if(hp>chrSize)
+        {
+            hp=chrSize;
+        }
+        if(hp>5)
+        {
+            hp=5;
+        }
+        if(hp<1)
+        {
+            this.gameObject.SetActive(false);
+        }
         rigid.WakeUp();
         if (!hidingOff&&IsHiding)
         {
@@ -352,6 +365,7 @@ public class PlayerMove : MonoBehaviour
                     //colorManager.colorOn = false;
                     obBlue.colorOn = false;
                     chrColor = 0;
+                    hp+=1;
                     Debug.Log("뺏음");
                 }
             }
@@ -365,6 +379,8 @@ public class PlayerMove : MonoBehaviour
                     //colorManager.colorOn = false;
                     obRed.colorOn = false;
                     chrColor = 2;
+                                        hp+=1;
+
                 }
             }
 
@@ -377,6 +393,8 @@ public class PlayerMove : MonoBehaviour
                     //colorManager.colorOn = false;
                     obRed.colorOn = false;
                     chrColor = 1;
+                                        hp+=1;
+
                 }
             }
         }

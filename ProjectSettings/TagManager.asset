@@ -11,6 +11,8 @@ TagManager:
   - blueOb
   - redOb
   - greenOb
+  - Way
+  - Way2
   layers:
   - Default
   - TransparentFX
